@@ -57,22 +57,19 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("What's your choice?");
-        const computerSelection = getComputerChoice();
-        if(computerSelection === playerSelection) {
-            getComputerChoice();
-        }
-        playRound(playerSelection, computerSelection);
-        console.log(playerScore);
-        console.log(computerScore);
+    
+    const playerSelection = prompt("What's your choice?");
+    const computerSelection = getComputerChoice();
+    if(computerSelection === playerSelection) {
+        getComputerChoice();
     }
-
-    if (playerScore > computerScore) {
+    playRound(playerSelection, computerSelection);
+    console.log(playerScore);
+    console.log(computerScore);
+    if (playerScore > computerScore) 
         alert("The Winner is Player!");
-    }
-    else {
+    else 
         alert("The Winner is Computer!");
-    }
+    
 }
 console.log(game());
