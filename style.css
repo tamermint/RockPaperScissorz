@@ -113,3 +113,9 @@ img {
     padding-top: 10px;
     font-size: 1.5rem;
 }
+
+img:hover {
+    border: 5px solid gold;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 10px gold;
+}
