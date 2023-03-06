@@ -3,6 +3,7 @@
 *::after {
     box-sizing: border-box;
     font-family: 'Cinzel', serif;
+    scroll-behavior: smooth;
 }
 
 body::before {
@@ -110,12 +111,32 @@ img {
 }
 
 .weapon-desc {
-    padding-top: 10px;
+    margin-top: 15px;
+    padding: 5px;
     font-size: 1.5rem;
+    text-decoration-color: none;
 }
 
+.weapon-desc.one, .two, .three {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 1.5rem;
+    text-decoration-color: none;
+    letter-spacing: 1.4px;
+    background-color: transparent;
+    border: 1px solid snow;
+    color: snow;
+    border-radius: 1000px;
+    box-shadow: 0 0 10px gold;
+}
+
+
+
 img:hover {
-    border: 5px solid gold;
-    border-radius: 15px;
+    border: 0 solid gold;
     box-shadow: 0 0 10px 10px gold;
+}
+
+img {
+    border-radius: 100px;
 }
