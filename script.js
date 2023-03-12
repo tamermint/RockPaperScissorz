@@ -13,19 +13,6 @@ function getComputerChoice() {
     return item;
 }
 
-
-//Let's keep two scores 
-let playerScore = 0;
-let computerScore = 0;
-
-//let's add event listener to each of our buttons
-
-let pressedButton = document.getElementsByTagName('button');
-
-for (let i = 0; i < pressedButton.length; i++) {
-    pressedButton[i].addEventListener('click', playRound);
-}
-
 function promptMessage(message) {
     var prompt = document.createElement("div");
     prompt.id = "win";
@@ -67,78 +54,50 @@ function promptMessage(message) {
 }
 
 
-
-
 //now let's create a function that takes player's selection and pits it
 //against computer's selection
-function playRound(e) {
+function playRound(e, playerScore, computerScore) {
+    
     let playerSelection = e.target.textContent.slice(4, -1);
-    console.log(`playerSelection is ${playerSelection}`);
-
     let computerSelection = getComputerChoice();
-    console.log(`computerSelection is ${computerSelection}`);
 
     if(playerSelection === computerSelection) {
         promptMessage(`The halls of Asgard Rumble! What a clash of weapons!, play again! <br/>
         Javi: ${playerScore} \t            Jotun King: ${computerScore}`);        
-    }
-
-    if (playerSelection == 'Mjolnir' && computerSelection == 'Jotun Cloak') {
-        computerScore += 1;
-        promptMessage(`You Lose!, Jotun King wins this round! Come on Drengr! <br/>
-        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
-    }
-
-    else if (playerSelection == 'Jotun Cloak' && computerSelection == 'Excalibur') {
-        computerScore += 1;
-        promptMessage(`You Lose!, Jotun King wins this round! Come on Drengr! <br/>
-        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
-    }
-
-    else if (playerSelection == 'Excalibur' && computerSelection == 'Mjolnir') {
-        computerScore += 1;
-        promptMessage(`You Lose!, Jotun King wins this round! Come on Drengr! <br/>
-        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
-    }
-
-    else if (playerSelection == 'Excalibur' && computerSelection == 'Jotun Cloak') {
+    } else if (
+        (playerSelection == 'Mjolnir' && computerSelection == 'Jotun Cloak') ||
+        (playerSelection == 'Jotun Cloak' && computerSelection == 'Excalibur') ||
+        (playerSelection == 'Excalibur' && computerSelection == 'Mjolnir')
+        ){
+            computerScore += 1;
+            promptMessage(`You Lose!, Jotun King wins this round! Come on Drengr! <br/>
+            Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
+    } else {
         playerScore += 1;
         promptMessage(`You Win this round!, Jotun King is cowering in fear! <br/>
         Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
     }
-
-    else if (playerSelection == 'Mjolnir' && computerSelection == 'Excalibur') {
-        playerScore += 1;
-        promptMessage(`You Win this round!, Jotun King is cowering in fear! <br/>
-        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
-    }
-
-    else if (playerSelection == 'Jotun Cloak' && computerSelection == 'Mjolnir') {
-        playerScore += 1;
-        promptMessage(`You Win this round!, Jotun King is cowering in fear! <br/>
-        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
-    }
+    return [playerScore, computerScore];
 }
-/*
+
 function game() {
+    let finalScore = 5;            //to keep track of final score
+    let playerScore = 0;
+    let computerScore = 0;
 
-    Here, we need to create a variable score and tally it with player 
-    and computer score, whoever reaches the first point
-    a div states that "Game over! <> Wins!"
-    
-    const playerSelection = prompt("What's your choice?");
-    const computerSelection = getComputerChoice();
-    if(computerSelection === playerSelection) {
-        getComputerChoice();
+    let pressedButton = document.getElementsByTagName('button');
+
+    for (let i = 0; i < pressedButton.length; i++) {
+        pressedButton[i].addEventListener('click', function(e) {           //The parameteres are being passed into the playRound now
+            [playerScore, computerScore] = playRound(e, playerScore, computerScore);
+            if (playerScore == finalScore) {
+                promptMessage(`You won the battle and closed the chasm!
+                Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
+            } else if (computerScore == finalScore) {
+                promptMessage(`You Lost! The Old Gods are coming down!
+                Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
+            }
+        });
     }
-    playRound(playerSelection, computerSelection);
-    console.log(playerScore);
-    console.log(computerScore);
-    if (playerScore > computerScore) 
-        alert("The Winner is Player!");
-    else 
-        alert("The Winner is Computer!");
-    
-}
-console.log(game()); */
-
+}     
+game();
