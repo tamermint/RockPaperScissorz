@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet" type="text/css" href="./transitions.css">
     <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
-   <!--<script type="text/javascript" src="./script.js"></script>-->
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -33,18 +33,21 @@
             to Loki! Havi must close the chasm to save Asgard! Pick your weapon! 
             Make sure to choose the right weapon otherwise the Jotun king will take over!
         </h3>
+        <div id="prompt">
+            <h3 id="prompt-text">Pick your weapon!</h3>
+        </div>
         <div class="img-container">
             <div class="mjolnir">
                 <img src="./assets/Mjolnir.png" alt="mjolnir" width="300px" height="400px">
-                <button class="weapon-desc one">The Mighty Hammer!</button>
+                <button class="weapon-desc" id="one">The Mjolnir!</button>
             </div>
             <div class="cloak">
                 <img src="./assets/Cloak.png" alt="jotun-cloak" width="300px" height="400px">
-                <button class="weapon-desc two">The Jotun Cloak!</button>
+                <button class="weapon-desc" id="two">The Jotun Cloak!</button>
             </div>
             <div class="excalibur">
                 <img src="./assets/Excalibur.png" alt="excalibur" width="300px" height="400px">
-                <button class="weapon-desc three">The Excalibur Sword!</button>
+                <button class="weapon-desc" id="three">The Excalibur!</button>
             </div>
         </div>
     </div>
