@@ -135,7 +135,11 @@ img {
     box-shadow: 0 0 10px gold;
 }
 
-
+button:active {
+    background-color: rgba(19,77,102,0.9);
+    box-shadow: 0 0 10px 10px gold;
+    transform: translateY(2px);
+}
 
 img:hover {
     border: 0 solid gold;

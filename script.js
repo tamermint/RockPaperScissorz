@@ -26,6 +26,47 @@ for (let i = 0; i < pressedButton.length; i++) {
     pressedButton[i].addEventListener('click', playRound);
 }
 
+function promptMessage(message) {
+    var prompt = document.createElement("div");
+    prompt.id = "win";
+    prompt.innerHTML = message;
+    prompt.style.display = "none";
+    prompt.style.position = "fixed";
+    prompt.style.top = "50%";
+    prompt.style.left = "50%";
+    prompt.style.Height = "500px";
+    prompt.style.Width = "500px";
+    prompt.style.fontSize = "1.5rem";
+    prompt.style.textAlign = "center";
+    prompt.style.transform = "translate(-50%, -50%)";
+    prompt.style.backgroundColor = "rgba(19,77,102,0.9)";
+    prompt.style.color = "snow";
+    prompt.style.padding = "100px";
+    prompt.style.border = "0 solid gold";
+    prompt.style.borderRadius = "1000px";
+    prompt.style.boxShadow = " 0 0 5px 5px gold";
+    prompt.style.opacity = 0;
+    prompt.style.transition = "opacity 0.5s ease-in-out";
+    prompt.style.zIndex = 9999;
+
+    document.body.appendChild(prompt);
+
+    prompt.style.display = "block";
+
+    setTimeout(function() {
+        prompt.style.opacity = 1;
+    }, 100);
+
+    setTimeout(function() {
+        prompt.style.opacity = 0;
+    }, 2000);
+
+    setTimeout(function() {
+        document.body.removeChild(prompt);
+    }, 2100);
+}
+
+
 
 
 //now let's create a function that takes player's selection and pits it
@@ -38,48 +79,44 @@ function playRound(e) {
     console.log(`computerSelection is ${computerSelection}`);
 
     if(playerSelection === computerSelection) {
-        var div = document.createElement("div");
-        div.textContent = "The halls of Asgard Rumble! What a clash of weapons!"
-        
+        promptMessage(`The halls of Asgard Rumble! What a clash of weapons!, play again! <br/>
+        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);        
     }
 
     if (playerSelection == 'Mjolnir' && computerSelection == 'Jotun Cloak') {
-        // return "You Lose! Paper beats Rock";
         computerScore += 1;
-        var div = document.createElement("div");
-        div.textContent = "You Lose!, Jotun King wins this round!Come on Drengr!";
-        console.log(div);
-        
+        promptMessage(`You Lose!, Jotun King wins this round! Come on Drengr! <br/>
+        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
     }
+
     else if (playerSelection == 'Jotun Cloak' && computerSelection == 'Excalibur') {
-        // return "You Lose! Scissors beats Paper";
         computerScore += 1;
-        var div = document.createElement("div");
-        div.textContent = "You Lose!, Jotun King wins this round!Come on Drengr!";
+        promptMessage(`You Lose!, Jotun King wins this round! Come on Drengr! <br/>
+        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
     }
+
     else if (playerSelection == 'Excalibur' && computerSelection == 'Mjolnir') {
-        // return "You Lose! Rock beats Scissors";
         computerScore += 1;
-        var div = document.createElement("div");
-        div.textContent = "You Lose!, Jotun King wins this round!Come on Drengr!";
+        promptMessage(`You Lose!, Jotun King wins this round! Come on Drengr! <br/>
+        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
     }
+
     else if (playerSelection == 'Excalibur' && computerSelection == 'Jotun Cloak') {
-        // return "You Win! Scissors beats Paper!";
         playerScore += 1;
-        var div = document.createElement("div");
-        div.textContent = "You Win this round!, Jotun King is cowering in fear!";
+        promptMessage(`You Win this round!, Jotun King is cowering in fear! <br/>
+        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
     }
+
     else if (playerSelection == 'Mjolnir' && computerSelection == 'Excalibur') {
-        // return "You Win! Rock beats Scissors!";
         playerScore += 1;
-        var div = document.createElement("div");
-        div.textContent = "You Win this round!, Jotun King is cowering in fear!";
+        promptMessage(`You Win this round!, Jotun King is cowering in fear! <br/>
+        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
     }
+
     else if (playerSelection == 'Jotun Cloak' && computerSelection == 'Mjolnir') {
-        // return "You Win! Paper beats Rock!";
         playerScore += 1;
-        var div = document.createElement("div");
-        div.textContent = "You Win this round!, Jotun King is cowering in fear!";
+        promptMessage(`You Win this round!, Jotun King is cowering in fear! <br/>
+        Javi: ${playerScore} \t            Jotun King: ${computerScore}`);
     }
 }
 /*
